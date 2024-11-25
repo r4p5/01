@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday My Love</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #1a1a1a;
+            font-family: 'Times New Roman', serif;
+            color: #fff;
+            overflow: hidden;
+            perspective: 2000px;
+        }
+
+        .background-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url(./bg.mp4);
+            /* background: 
+                radial-gradient(circle at 20% 20%, rgba(183, 28, 28, 0.2), transparent 40%),
+                radial-gradient(circle at 80% 80%, rgba(183, 28, 28, 0.2), transparent 40%); */
+            z-index: 0;
+        }
+
+        .background-overlay video {
+            width: 100%;
+            /* Make the video fill the container */
+            height: 100%;
+            /* Make the video fill the container */
+            object-fit: cover;
+            /* Cover the container while maintaining aspect ratio */
+        }
+
+        .book {
+            position: relative;
+            width: 80vw;
+            height: 70vh;
+            transform-style: preserve-3d;
+            transition: transform 0.5s;
+        }
+
+        .img-fluid {
+            width: 100%;
+            border-radius: 10px;
+
+        }
+
+        .page {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transform-origin: center;
+            transition: opacity 0.5s;
+            cursor: pointer;
+        }
+
+        .page-content {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            padding: 20px;
+            background: rgba(30, 30, 30, 0.9);
+            border: 1px solid rgba(255, 182, 193, 0.3);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .page.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .message {
+            color: #ffb6c1;
+            font-size: 18px;
+            line-height: 1.8;
+            margin: 20px 0;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .rose {
+            font-size: 1rem;
+            margin: 10px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        .page-number {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            font-size: 14px;
+            color: rgba(255, 182, 193, 0.5);
+        }
+
+        .particle {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        @keyframes flyAway {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translate(var(--tx), var(--ty)) rotate(var(--rot));
+                opacity: 0;
+            }
+        }
+
+        .sparkle {
+            position: fixed;
+            width: 4px;
+            height: 4px;
+            background: #ffb6c1;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        @keyframes sparkleAway {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translate(var(--tx), var(--ty)) scale(0);
+                opacity: 0;
+            }
+        }
+
+        .instruction {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255, 182, 193, 0.7);
+            font-size: 14px;
+            text-align: center;
+            animation: fadeInOut 2s infinite;
+        }
+
+        @keyframes fadeInOut {
+
+            0%,
+            100% {
+                opacity: 0.4;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        .media {
+            margin: 20px 0;
+        }
+
+        .media img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin: 10px 0;
+        }
+
+        .media video {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="background-overlay">
+        <video autoplay muted loop>
+            <source src="./bg.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <div class="book">
+        <div class="page">
+            <div class="page-content">
+                <h1 style="color: #ffb6c1; font-size: 3rem; margin: 20px 0;">Happy Birthday Radhe❣️</h1>
+            </div>
+        </div>
+
+        <div class="page hidden">
+            <div class="page-content">
+                <img src="./363no.jpg" class="img-fluid rounded-top" alt="" />
+                <div class="rose">I know looking at this... Your reaction is the same as in the photo😂</div>
+
+
+            </div>
+        </div>
+
+        <div class="page hidden">
+            <div class="page-content">
+                <img src="./363 yes.jpg" class="img-fluid rounded-top" alt="" />
+                <p class="message">
+                    See you look more cute with me😉 <br>
+                    Shaadi karle mujhse... roz cute dikhegi...
+                </p>
+
+            </div>
+        </div>
+
+        <div class="page hidden">
+            <div class="page-content">
+
+                <div class="message">acha jokes apart...</div>
+
+            </div>
+        </div>
+
+        <div class="page hidden">
+            <div class="page-content">
+                <img src="./onam.jpg" class="img-fluid rounded-top" alt="" />
+                <p class="message">
+                    Thanks to mummy papa ❤️ <br>
+                    for giving my the other half
+                </p>
+                <div class="rose">💕</div>
+            </div>
+        </div>
+
+        <div class="page hidden">
+            <div class="page-content">
+                <div class="rose">you are my 11:11 wish</div>
+    
+                <div class="rose">Tu yaha nahi hai so giving you a virtual Hug🤗</div>
+            </div>
+        </div>
+
+        <div class="page hidden">
+            <div class="page-content">
+                <img src="./trip.jpg" class="img-fluid rounded-top" alt="">
+                <div class="rose">Tere saath I want to go more trips</div>
+                <p class="message">
+                   I want to spend more time with you..
+               <br>
+                    I want to kiss you and 
+              <br>I miss those touch...❤️</p>
+            </div>
+        </div>
+
+        <div class="page hidden">
+            <div class="page-content">
+                <p class="message">
+                    Happiest birthday to my most special one💗 
+                    Happy Birthday Nikki ❤️<br>
+                </p>
+                <p class="rose">
+                    I LOVE YOU BINDOK
+                </p>
+                <p class="rose">
+                    I MISS YOU BHENDI GAWAR🥺
+                </p>
+        </div>
+           
+        </div>
+
+        <div class="page hidden">
+            <div class="page-content" style="background-color: #ffb6c14c;">
+ 
+        </div>
+        </div>
+    </div>
+
+
+    <script>
+
+        const pages = document.querySelectorAll('.page');
+        let currentPage = 0;
+
+        function createParticle(x, y, type) {
+            const particle = document.createElement('div');
+            particle.className = type === 'butterfly' ? 'particle' : 'sparkle';
+
+            if (type === 'butterfly') {
+                particle.innerHTML = Math.random() > 0.5 ? '✨' : '✨';
+                particle.style.fontSize = Math.random() * 20 + 10 + 'px';
+            }
+
+            particle.style.left = x + 'px';
+            particle.style.top = y + 'px';
+
+            const angle = Math.random() * Math.PI * 2;
+            const distance = Math.random() * 300 + 100;
+            const tx = Math.cos(angle) * distance;
+            const ty = Math.sin(angle) * distance;
+            const rotation = Math.random() * 720 - 360;
+
+            particle.style.setProperty('--tx', `${tx}px`);
+            particle.style.setProperty('--ty', `${ty}px`);
+            particle.style.setProperty('--rot', `${rotation}deg`);
+
+            particle.style.animation = type === 'butterfly'
+                ? `flyAway 2s ease-out forwards`
+                : `sparkleAway 1s ease-out forwards`;
+
+            document.body.appendChild(particle);
+            setTimeout(() => particle.remove(), 2000);
+        }
+
+        function explodeIntoParticles(element) {
+            const rect = element.getBoundingClientRect();
+            const particles = 20;
+            const sparkles = 30;
+
+            for (let i = 0; i < particles; i++) {
+                const x = rect.left + Math.random() * rect.width;
+                const y = rect.top + Math.random() * rect.height;
+                setTimeout(() => createParticle(x, y, 'butterfly'), i * 50);
+            }
+
+            for (let i = 0; i < sparkles; i++) {
+                const x = rect.left + Math.random() * rect.width;
+                const y = rect.top + Math.random() * rect.height;
+                setTimeout(() => createParticle(x, y, 'sparkle'), i * 30);
+            }
+        }
+        // foceni4176@gitated.com
+        pages.forEach((page, index) => {
+            page.addEventListener('click', () => {
+                if (index === currentPage) {
+                    explodeIntoParticles(page);
+                    page.classList.add('hidden');
+
+                    if (currentPage < pages.length - 1) {
+                        pages[currentPage + 1].classList.remove('hidden');
+                    }
+
+                    currentPage++;
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
